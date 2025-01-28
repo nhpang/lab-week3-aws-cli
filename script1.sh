@@ -1,8 +1,6 @@
 # lab-week3-aws-cli
 
-## script1
-
-```bash
+## script1  
 #!/usr/bin/env bash
 
 set -eu
@@ -26,4 +24,3 @@ aws ec2 import-key-pair \
 
 # Confirm success
 echo "Key pair '$key_name' successfully imported into AWS."
-```

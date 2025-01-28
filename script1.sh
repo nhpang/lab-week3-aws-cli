@@ -1,6 +1,3 @@
-# lab-week3-aws-cli
-
-## script1  
 #!/usr/bin/env bash
 
 set -eu
@@ -8,7 +5,7 @@ set -eu
 # Variables
 region="us-west-2"
 key_name="bcitkey"
-public_key_file="~/.ssh/bcitkey.pub" # Update this path if your public key is located elsewhere
+public_key_file="$HOME/.ssh/bcitkey.pub"  # Update this path if your public key is located elsewhere
 
 # Check if the public key file exists
 if [[ ! -f $public_key_file ]]; then
@@ -19,7 +16,7 @@ fi
 # Import the public key to AWS
 aws ec2 import-key-pair \
   --key-name "$key_name" \
-  --public-key-material "$(cat $public_key_file)" \
+  --public-key-material "$(base64 -w 0 $public_key_file)" \
   --region "$region"
 
 # Confirm success
